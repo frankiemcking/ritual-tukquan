@@ -74,8 +74,6 @@
   <img id="ritualImage" src="" alt="Fase del ritual">
   <div id="ritualText"></div>
   <div id="resultadoFinal"></div>
-
-  <!-- 🎶 Audio que se activa con clic -->
   <audio id="ritualAudio" src="ritual_ambient.mp3" loop></audio>
 
   <script>
@@ -88,6 +86,7 @@
 
     const fases = {
       fase1: "fase1.png",
+      transiciones: ["transicion1.png", "transicion2.png", "transicion3.png"],
       cara: "fase2_cara.png",
       cruz: "fase2_cruz.png",
       fase3: "fase3.png"
@@ -104,8 +103,7 @@
       const audio = document.getElementById('ritualAudio');
 
       if (faseActual === 0) {
-        audio.play(); 
-        
+        audio.play();
         img.style.display = 'block';
         img.src = fases.fase1;
         txt.innerText = frases.aparicion;
@@ -114,11 +112,22 @@
         faseActual = 1;
 
       } else if (faseActual === 1) {
+        btn.disabled = true;
+        // Mostrar transición secuencial
+        for (let i = 0; i < fases.transiciones.length; i++) {
+          img.src = fases.transiciones[i];
+          txt.innerText = "";
+          res.innerText = "";
+          await new Promise(resolve => setTimeout(resolve, 700));
+        }
+
+        // Mostrar resultado final
         esCara = Math.random() > 0.5;
         img.src = esCara ? fases.cara : fases.cruz;
         txt.innerText = esCara ? frases.cara : frases.cruz;
         res.innerText = esCara ? 'Resultado: CARA' : 'Resultado: CRUZ';
         btn.innerText = "Finalizar Ritual";
+        btn.disabled = false;
         faseActual = 2;
 
       } else if (faseActual === 2) {
