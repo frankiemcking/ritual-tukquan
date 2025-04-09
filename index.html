@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Moneda al Aire - Tuk'Quan</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #f4e7c6;
+      font-family: 'Georgia', serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      margin: 1rem;
+      border-radius: 8px;
+      border: none;
+      background-color: #333;
+      color: #f4e7c6;
+      cursor: pointer;
+    }
+    #ritualImage {
+      max-width: 70vw;
+      max-height: 60vh;
+      margin-top: 1rem;
+      border-radius: 10px;
+      display: none;
+    }
+    #ritualText {
+      font-style: italic;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      max-width: 80%;
+    }
+    #resultadoFinal {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      color: #ffd700;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Moneda al Aire</h1>
+  <button onclick="invocarTukQuan()">Invocar a Tuk'Quan</button>
+  <img id="ritualImage" src="" alt="Fase del ritual">
+  <div id="ritualText"></div>
+  <div id="resultadoFinal"></div>
+
+  <script>
+    const frases = {
+      aparicion: "Desde la sombra, Tuk'Quan escucha tu duda...",
+      cara: "El fuego te guía. Es momento de actuar.",
+      cruz: "Aún no es la hora. Permanece en calma.",
+      despedida: "El ritual ha hablado. No preguntes más."
+    };
+
+    const fases = {
+      fase1: "fase1.png",
+      cara: "fase2_cara.png",
+      cruz: "fase2_cruz.png",
+      fase3: "fase3.png"
+    };
+
+    async function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function invocarTukQuan() {
+      const img = document.getElementById('ritualImage');
+      const text = document.getElementById('ritualText');
+      const result = document.getElementById('resultadoFinal');
+
+      img.style.display = 'block';
+      img.src = fases.fase1;
+      text.innerText = frases.aparicion;
+      await sleep(2000);
+
+      const esCara = Math.random() > 0.5;
+      img.src = esCara ? fases.cara : fases.cruz;
+      text.innerText = esCara ? frases.cara : frases.cruz;
+      result.innerText = esCara ? 'Resultado: CARA' : 'Resultado: CRUZ';
+      await sleep(2000);
+
+      img.src = fases.fase3;
+      text.innerText = frases.despedida;
+    }
+  </script>
+</body>
+</html>
