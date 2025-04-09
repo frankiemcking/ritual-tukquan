@@ -21,7 +21,7 @@
     }
 
     main {
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -95,9 +95,24 @@
       font-size: 0.85rem;
       color: #ccc;
     }
+
+    #introVideo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100dvh;
+      object-fit: cover;
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
+  <video id="introVideo" autoplay muted playsinline onended="mostrarRitual()" style="display: none;">
+    <source src="tukquan_intro.mp4" type="video/mp4">
+    Tu navegador no soporta video.
+  </video>
+
   <main>
     <h1>Moneda al Aire</h1>
     <input id="preguntaInput" type="text" placeholder="¿Qué deseas saber?">
@@ -109,6 +124,23 @@
     <div id="historial"></div>
   </main>
   <audio id="ritualAudio" src="ritual_ambient.mp3" loop></audio>
+
+  <script>
+    function mostrarRitual() {
+      document.getElementById('introVideo').style.display = 'none';
+      document.querySelector('main').style.display = 'flex';
+      sessionStorage.setItem('ritualMostrado', 'true');
+    }
+
+    window.onload = function () {
+      if (!sessionStorage.getItem('ritualMostrado')) {
+        document.getElementById('introVideo').style.display = 'block';
+      } else {
+        document.querySelector('main').style.display = 'flex';
+      }
+    };
+  </script>
+
   <script>
     const frases = {
       aparicion: "Desde la sombra, Tuk'Quan escucha tu duda...",
