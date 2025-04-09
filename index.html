@@ -49,7 +49,7 @@
 </head>
 <body>
   <h1>Moneda al Aire</h1>
-  <button onclick="invocarTukQuan()">Invocar a Tuk'Quan</button>
+  <button id="ritualButton" onclick="gestionarRitual()">Iniciar Ritual</button>
   <img id="ritualImage" src="" alt="Fase del ritual">
   <div id="ritualText"></div>
   <div id="resultadoFinal"></div>
@@ -69,28 +69,49 @@
       fase3: "fase3.png"
     };
 
-    async function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    let faseActual = 0;
+    let esCara = false;
 
-    async function invocarTukQuan() {
+    async function gestionarRitual() {
+      const btn = document.getElementById('ritualButton');
       const img = document.getElementById('ritualImage');
-      const text = document.getElementById('ritualText');
-      const result = document.getElementById('resultadoFinal');
+      const txt = document.getElementById('ritualText');
+      const res = document.getElementById('resultadoFinal');
 
-      img.style.display = 'block';
-      img.src = fases.fase1;
-      text.innerText = frases.aparicion;
-      await sleep(2000);
+      if (faseActual === 0) {
+        // Fase de invocación
+        img.style.display = 'block';
+        img.src = fases.fase1;
+        txt.innerText = frases.aparicion;
+        res.innerText = "";
+        btn.innerText = "Mostrar Resultado";
+        faseActual = 1;
 
-      const esCara = Math.random() > 0.5;
-      img.src = esCara ? fases.cara : fases.cruz;
-      text.innerText = esCara ? frases.cara : frases.cruz;
-      result.innerText = esCara ? 'Resultado: CARA' : 'Resultado: CRUZ';
-      await sleep(2000);
+      } else if (faseActual === 1) {
+        // Fase de resultado aleatorio
+        esCara = Math.random() > 0.5;
+        img.src = esCara ? fases.cara : fases.cruz;
+        txt.innerText = esCara ? frases.cara : frases.cruz;
+        res.innerText = esCara ? 'Resultado: CARA' : 'Resultado: CRUZ';
+        btn.innerText = "Finalizar Ritual";
+        faseActual = 2;
 
-      img.src = fases.fase3;
-      text.innerText = frases.despedida;
+      } else if (faseActual === 2) {
+        // Fase de cierre
+        img.src = fases.fase3;
+        txt.innerText = frases.despedida;
+        btn.innerText = "Iniciar Nuevo Ritual";
+        faseActual = 3;
+
+      } else {
+        // Reiniciar todo
+        faseActual = 0;
+        img.style.display = 'none';
+        img.src = "";
+        txt.innerText = "";
+        res.innerText = "";
+        btn.innerText = "Iniciar Ritual";
+      }
     }
   </script>
 </body>
