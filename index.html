@@ -75,8 +75,8 @@
   <div id="ritualText"></div>
   <div id="resultadoFinal"></div>
 
-<audio id="ritualAudio" src="https://raw.githubusercontent.com/frankiemcking/ritual-tukquan/main/ritual_ambient.mp3" loop autoplay></audio>
-  
+  <!-- 🎶 Audio que se activa con clic -->
+  <audio id="ritualAudio" src="ritual_ambient.mp3" loop></audio>
 
   <script>
     const frases = {
@@ -101,8 +101,11 @@
       const img = document.getElementById('ritualImage');
       const txt = document.getElementById('ritualText');
       const res = document.getElementById('resultadoFinal');
+      const audio = document.getElementById('ritualAudio');
 
       if (faseActual === 0) {
+        audio.play(); 
+        
         img.style.display = 'block';
         img.src = fases.fase1;
         txt.innerText = frases.aparicion;
