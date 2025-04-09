@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Moneda al Aire - Tuk'Quan</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#111111" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -106,7 +109,11 @@
     <div id="historial"></div>
   </main>
   <audio id="ritualAudio" src="ritual_ambient.mp3" loop></audio>
-
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
   <script>
     const frases = {
       aparicion: "Desde la sombra, Tuk'Quan escucha tu duda...",
