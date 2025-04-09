@@ -5,68 +5,69 @@
   <title>Moneda al Aire - Tuk'Quan</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background: radial-gradient(ellipse at center, #111 0%, #000 100%);
-      color: #f4e7c6;
-      font-family: 'Cinzel', serif;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+    color: #f4e7c6;
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
 
-    h1 {
-      font-size: 2.5rem;
-      text-shadow: 0 0 8px #aa8833;
-    }
+  h1 {
+    font-size: 2.5rem;
+    text-shadow: 0 0 8px #aa8833;
+  }
 
-    button {
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
-      margin: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ffd700;
-      background-color: #222;
-      color: #ffd700;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
-      transition: all 0.3s ease;
-    }
+  button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    margin: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ffd700;
+    background-color: #222;
+    color: #ffd700;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    transition: all 0.3s ease;
+  }
 
-    button:hover {
-      background-color: #444;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-    }
+  button:hover {
+    background-color: #444;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  }
 
-    #ritualImage {
-      max-width: 70vw;
-      max-height: 60vh;
-      margin-top: 1rem;
-      border-radius: 12px;
-      border: 2px solid #ffd700;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-      display: none;
-    }
+  #ritualImage {
+    width: 600px;
+    height: 600px;
+    object-fit: contain;
+    margin-top: 1rem;
+    border-radius: 12px;
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    display: none;
+  }
 
-    #ritualText {
-      font-style: italic;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      max-width: 80%;
-    }
+  #ritualText {
+    font-style: italic;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    max-width: 80%;
+  }
 
-    #resultadoFinal {
-      margin-top: 1rem;
-      font-size: 1.3rem;
-      color: #ffd700;
-      font-weight: bold;
-    }
-  </style>
+  #resultadoFinal {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    color: #ffd700;
+    font-weight: bold;
+  }
+</style>
 </head>
 <body>
   <h1>Moneda al Aire</h1>
