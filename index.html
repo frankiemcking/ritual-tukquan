@@ -5,24 +5,32 @@
   <title>Moneda al Aire - Tuk'Quan</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       background: radial-gradient(ellipse at center, #111 0%, #000 100%);
       color: #f4e7c6;
       font-family: 'Cinzel', serif;
       text-align: center;
+      overflow: hidden;
+    }
+
+    main {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
-      padding-top: 2rem;
+      height: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
     }
 
     h1 {
       font-size: 2.5rem;
       text-shadow: 0 0 8px #aa8833;
+      margin-bottom: 1rem;
     }
 
     button {
@@ -44,10 +52,10 @@
     }
 
     #ritualImage {
-      width: 600px;
-      height: 600px;
+      width: 280px;
+      height: 280px;
       object-fit: contain;
-      margin-top: 1rem;
+      margin: 1rem 0;
       border-radius: 12px;
       border: 2px solid #ffd700;
       box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
@@ -56,45 +64,47 @@
 
     #ritualText {
       font-style: italic;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      max-width: 80%;
-      min-height: 60px;
+      font-size: 1rem;
+      max-width: 90%;
+      min-height: 50px;
+      margin: 0.5rem 0;
     }
 
     #resultadoFinal {
-      margin-top: 1rem;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: #ffd700;
       font-weight: bold;
+      margin-bottom: 0.5rem;
     }
 
     #preguntaInput {
       padding: 0.5rem;
       font-size: 1rem;
-      width: 300px;
+      width: 90%;
+      max-width: 300px;
       border-radius: 6px;
       border: 1px solid #ccc;
-      margin-bottom: 1rem;
       text-align: center;
+      margin-bottom: 0.5rem;
     }
 
     #lunaFase, #historial {
-      margin-top: 1rem;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #ccc;
     }
   </style>
 </head>
 <body>
-  <h1>Moneda al Aire</h1>
-  <input id="preguntaInput" type="text" placeholder="¿Qué deseas saber?">
-  <button id="ritualButton" onclick="gestionarRitual()">Iniciar Ritual</button>
-  <img id="ritualImage" src="" alt="Fase del ritual">
-  <div id="ritualText"></div>
-  <div id="resultadoFinal"></div>
-  <div id="lunaFase"></div>
-  <div id="historial"></div>
+  <main>
+    <h1>Moneda al Aire</h1>
+    <input id="preguntaInput" type="text" placeholder="¿Qué deseas saber?">
+    <button id="ritualButton" onclick="gestionarRitual()">Iniciar Ritual</button>
+    <img id="ritualImage" src="" alt="Fase del ritual">
+    <div id="ritualText"></div>
+    <div id="resultadoFinal"></div>
+    <div id="lunaFase"></div>
+    <div id="historial"></div>
+  </main>
   <audio id="ritualAudio" src="ritual_ambient.mp3" loop></audio>
 
   <script>
